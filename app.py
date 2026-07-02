@@ -5,12 +5,13 @@ import torchvision.transforms as transforms
 from torchvision.models import efficientnet_b0, EfficientNet_B0_Weights
 from PIL import Image
 import os
-
-# --- Configuration (matching your Colab setup) ---
-path = 'F:\IMAGE CLASSIFICATION'
+# --- Configuration (UPDATED FOR CLOUD DEPLOYMENT) ---
+# Keep the model file in the same directory as app.py
 model_filename = "coffee_multilabel_fine_tuned.pth"
-model_path = os.path.join(path, model_filename)
+model_path = model_filename  # Looks in the root folder of your project
+
 target_names = ['miner', 'rust', 'phoma']
+# Cloud instances usually run on CPU unless you pay for heavy GPU tiers
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # --- Image Transformations (must match training/inference) ---
@@ -81,7 +82,7 @@ uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file).convert("RGB")
-    st.image(image, caption="Uploaded Image", use_column_width=True)
+    st.image(image, caption="Uploaded Image", use_container_width=True)
     st.write("")
     st.write("Classifying...")
 
