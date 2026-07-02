@@ -1,5 +1,5 @@
-# Use Python 3.11 to support newer torch/networkx dependencies
-FROM python:3.11-slim
+# Use Python 3.12 to support newer NumPy and PyTorch dependencies
+FROM python:3.12-slim
 
 # Set environment variables to prevent Python from writing pyc files and buffering stdout/stderr
 ENV PYTHONDONTWRITEBYTECODE=1
