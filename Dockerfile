@@ -9,11 +9,11 @@ ENV PYTHONUNBUFFERED=1
 WORKDIR /app
 
 # Install system dependencies needed for image processing if any (optional but safe)
+# Install system dependencies (removed software-properties-common)
 RUN apt-get update && apt-get install -y \
     build-essential \
-    software-properties-common \
     git \
-    && rm -rf /lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements first to leverage Docker caching
 COPY requirements.txt .
