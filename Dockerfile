@@ -1,5 +1,5 @@
-# Use an official lightweight Python image
-FROM python:3.10-slim
+# Use Python 3.11 to support newer torch/networkx dependencies
+FROM python:3.11-slim
 
 # Set environment variables to prevent Python from writing pyc files and buffering stdout/stderr
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -8,8 +8,7 @@ ENV PYTHONUNBUFFERED=1
 # Set the working directory inside the container
 WORKDIR /app
 
-# Install system dependencies needed for image processing if any (optional but safe)
-# Install system dependencies (removed software-properties-common)
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
     git \
