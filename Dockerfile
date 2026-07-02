@@ -24,7 +24,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Streamlit uses port 8501 by default
-EXPOSE 8501
+EXPOSE 8000
 
 # Command to run Streamlit when the container starts
 CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
